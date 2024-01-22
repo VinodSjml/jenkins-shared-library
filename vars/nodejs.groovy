@@ -1,14 +1,20 @@
+def lintChecks() {
+    sh "echo installing jslint"
+    sh "npm i jslint"
+    sh "echo starting lint checks..."
+    sh "/home/centos/node_modules/jslint/bin/jslint.js server.js || true"
+    sh "echo lint checks are completed..!"
+}
+
 def call() {
         pipeline {
         agent any
         stages {
             stage('lint check'){
                 steps{
-                    sh "echo installing jslint"
-                    sh "npm i jslint"
-                    sh "echo starting lint checks..."
-                    sh "/home/centos/node_modules/jslint/bin/jslint.js server.js || true"
-                    sh "echo lint checks are completed..!"
+                    script{
+                        lintChecks()
+                    }
                 }
             }
             stage('generating artifacts'){
