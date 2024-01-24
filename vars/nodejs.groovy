@@ -54,7 +54,7 @@ def call() {
                     expression { ${TAG_NAME} != null }
                 }
                 steps{
-                    sh "executing against ${TAG_NAME} "
+                    sh "echo executing against ${TAG_NAME} "
                     sh "echo generating artifacts - npm install"
                 }
             }
