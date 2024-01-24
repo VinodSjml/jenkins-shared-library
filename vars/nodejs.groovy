@@ -23,7 +23,7 @@ def call() {
             }
             stage('sonar check'){
                 steps{
-                    ARGS=${"-Dsonar.sources=."}
+                    ARGS="-Dsonar.sources=."
                     script{
                         common.sonarChecks()
                     }
