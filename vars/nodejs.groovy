@@ -50,9 +50,7 @@ def call() {
                 }
             }
             stage('generating artifacts'){
-                when { 
-                    expression{ ${TAG_NAME} != null }
-                }
+                when { tag "" }
                 steps{
                     sh "echo executing against ${TAG_NAME} "
                     sh "echo generating artifacts - npm install"
