@@ -12,7 +12,6 @@ def call() {
         environment {
             SONAR_URL = "172.31.38.57"
             SONAR_CRED = credentials('SONAR_CRED')
-            ARGS = "-Dsonar.sources=."
         }
         stages {
             stage('lint check'){
@@ -24,8 +23,8 @@ def call() {
             }
             stage('sonar check'){
                 steps{
-                    //env.ARGS="-Dsonar.sources=."
                     script{
+                        env.ARGS="-Dsonar.sources=."
                         common.sonarChecks()
                     }
                 }
