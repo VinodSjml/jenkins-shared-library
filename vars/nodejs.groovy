@@ -23,7 +23,10 @@ def call() {
             }
             stage('sonar check'){
                 steps{
-                    sh "echo sonar checks are completed"
+                    ARGS=${"-Dsonar.sources=."}
+                    script{
+                        common.sonarChecks()
+                    }
                 }
             }
             stage('test cases'){
