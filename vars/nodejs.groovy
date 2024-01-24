@@ -42,6 +42,7 @@ def call() {
                 }
                 stage('functional test'){
                     steps{
+                        
                         sh " echo running functional test"
                         sh "echo success"
                     }
@@ -50,10 +51,10 @@ def call() {
             }
             stage('generating artifacts'){
                 when { 
-                    expression {env.TAG_NAME != null }
+                    expression { ${TAG_NAME} != null }
                 }
                 steps{
-                    sh "executing against env.TAG_NAME "
+                    sh "executing against ${TAG_NAME} "
                     sh "echo generating artifacts - npm install"
                 }
             }
