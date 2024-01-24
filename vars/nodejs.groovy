@@ -27,9 +27,31 @@ def call() {
                     common.sonarChecks()  
                     }
             }
+            stage('test cases'){
+                parallel{
+                stage('unit test'){
+                    steps{
+                        sh "echo running npm test"
+                        sh "echo success"
+                    }
+                }
+                stage('integration test'){
+                    steps{
+                        sh "echo running npm verify"
+                        sh "echo success"
+                    }
+                }
+                stage('functional test'){
+                    steps{
+                        sh " echo running functional test"
+                        sh "echo success"
+                    }
+                }
+                }
+            }
             stage('generating artifacts'){
                 steps{
-                    sh "npm install"
+                    sh "echo generating artifacts - npm install"
                 }
             }
         }
