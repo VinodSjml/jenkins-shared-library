@@ -52,7 +52,7 @@ def call() {
             stage('generating artifacts'){
                 when { tag "" }
                 steps{
-                    sh "echo executing against ${TAG_NAME} "
+                    sh "echo executing against $TAG_NAME "
                     sh "echo generating artifacts - npm install"
                 }
             }
