@@ -50,7 +50,9 @@ def call() {
                 }
             }
             stage('generating artifacts'){
+                when { tag pattern: "0*", comparator: "REGEXP"}
                 steps{
+                    sh "executing against env.TAG_NAME "
                     sh "echo generating artifacts - npm install"
                 }
             }
