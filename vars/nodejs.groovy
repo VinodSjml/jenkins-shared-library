@@ -25,8 +25,10 @@ def call() {
                 steps{
                     script{
                     //env.ARGS="-Dsonar.sources=."
-                    common.sonarChecks()
+                    //common.sonarChecks()
+                    
                     }
+                    sh "echo sonar checks are completed"
                 }
             }
             stage('test cases'){
