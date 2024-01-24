@@ -51,7 +51,7 @@ def call() {
             }
             stage('generating artifacts'){
                 when { 
-                    expression { ${TAG_NAME} != null }
+                    expression{ ${TAG_NAME} != null }
                 }
                 steps{
                     sh "echo executing against ${TAG_NAME} "
