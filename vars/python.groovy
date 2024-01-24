@@ -22,8 +22,10 @@ def call() {
             }
             stage('sonar check'){
                 steps{
+                    script{
                     //env.ARGS="-Dsonar.sources=."
                     common.sonarChecks()  
+                }
                 }
             }
             stage('test cases'){
