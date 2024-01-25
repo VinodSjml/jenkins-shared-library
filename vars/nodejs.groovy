@@ -56,7 +56,14 @@ def call() {
                 when { tag "" }
                 steps{
                     sh "echo executing against $TAG_NAME "
-                    sh "echo generating artifacts - npm install"
+                    sh "npm install"
+                    sh "zip ${component}-${TAG_NAME}.zip node_modules server.js"
+                }
+            }
+            stage('uploading artifacts'){
+                when {tag ""}
+                steps{
+                    sh "echo uploading artifacts"
                 }
             }
         }
