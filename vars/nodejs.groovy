@@ -58,6 +58,7 @@ def call() {
                     sh "echo executing against $TAG_NAME "
                     sh "npm install"
                     sh "zip ${component}-${TAG_NAME}.zip node_modules server.js"
+                    sh "ls -ltr"
                 }
             }
             stage('uploading artifacts'){
