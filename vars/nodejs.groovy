@@ -65,6 +65,7 @@ def call() {
                 when {tag ""}
                 steps{
                     sh "echo uploading artifacts"
+                    
                 }
             }
         }
