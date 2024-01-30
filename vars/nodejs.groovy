@@ -67,7 +67,7 @@ def call() {
                 when {tag ""}
                 steps{
                     sh ''' echo uploading ${component} to nexus
-                    curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} --upload-file ${component}-${TAG-NAME}.zip http://${NEXUS_URL}:8081/repository/${component}/${component}-${TAG-NAME}.zip
+                    curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} --upload-file ${component}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${component}/${component}-${TAG_NAME}.zip
                     '''                    
                 }
             }
