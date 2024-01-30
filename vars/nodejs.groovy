@@ -66,10 +66,9 @@ def call() {
             stage('uploading artifacts'){
                 when {tag ""}
                 steps{
-                    sh ''' echo uploading ${component} to nexus
-                    curl http://3.95.37.159:8081/service/rest/repository/browse/catalogue/
-                    curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} --upload-file ${component}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${component}/${component}-${TAG_NAME}.zip
-                    '''                    
+                    sh "echo uploading ${component} to nexus"
+                    // curl -u admin:password -X GET 'http://3.95.37.159:8081/service/rest/v1/components?repository=catalogue'
+                   sh "curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} --upload-file ${component}-${TAG_NAME}.zip http://${NEXUS_URL}:8081/repository/${component}/${component}-${TAG_NAME}.zip"                   
                 }
             }
         }
