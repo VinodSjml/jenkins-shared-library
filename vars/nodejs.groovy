@@ -66,9 +66,9 @@ def call() {
             stage('uploading artifacts'){
                 when {tag ""}
                 steps{
-                    
-                    sh "curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} --upload-file ${component}-${TAG-NAME}.zip http://${NEXUS_URL}:8081/repository/${component}/${component}-${TAG-NAME}.zip"
-                    
+                    sh ''' echo uploading ${component} to nexus
+                    curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} --upload-file ${component}-${TAG-NAME}.zip http://${NEXUS_URL}:8081/repository/${component}/${component}-${TAG-NAME}.zip
+                    '''                    
                 }
             }
         }
