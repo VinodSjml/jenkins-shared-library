@@ -59,7 +59,7 @@ def call() {
                 steps{
                     script{
                         def output = sh(returnStdout: true, script: "curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} -s -X GET 'http://${NEXUS_URL}:8081/service/rest/v1/components?repository=${component}' | grep ${component}-${TAG_NAME} || true")
-                        echo ${output}
+                        print output
                     }
                 }
             }
