@@ -61,6 +61,7 @@ def call() {
                     script{
                         env.Version_check = sh(returnStdout: true, script: "curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} -s -X GET 'http://${NEXUS_URL}:8081/service/rest/v1/components?repository=${component}'| jq '.items[].name' | grep ${component}-${TAG_NAME} | sed -e 's/\"//g' -e 's/.zip//g'")
                         print Version_check
+                        print Release_name
                     }
                 }
             }
