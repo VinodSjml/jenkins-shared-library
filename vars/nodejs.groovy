@@ -80,7 +80,7 @@ def call() {
             stage('uploading artifacts'){
                 when {
                 expression{tag "" }    
-                expression{Version_check != Release_name}
+                expression{Version_check == ""}
                 }
                 steps{
                     sh "echo uploading ${component} to nexus"
