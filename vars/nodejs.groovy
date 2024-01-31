@@ -58,7 +58,7 @@ def call() {
                 when {tag ""}
                 steps{
                     script{
-                        def output = sh(returnStdout: true, script: "curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} -s -X GET 'http://172.31.25.180:8081/service/rest/v1/components?repository=catalogue'| jq ".items[].name" | grep catalogue-001 | sed -e 's/\"//g'")
+                        def output = sh(returnStdout: true, script: "curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} -s -X GET 'http://172.31.25.180:8081/service/rest/v1/components?repository=catalogue'| jq '.items[].name' | grep catalogue-001 | sed -e 's/\"//g'")
                         print output
                     }
                 }
