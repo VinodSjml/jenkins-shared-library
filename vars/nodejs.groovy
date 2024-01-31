@@ -78,7 +78,7 @@ def call() {
             }
             stage('uploading artifacts'){
                 when {
-                expression{$TAG_NAME != null }    
+                expression{env.$TAG_NAME != null }    
                 expression{Version_check == ""}
                 }
                 steps{
