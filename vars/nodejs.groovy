@@ -75,8 +75,10 @@ def call() {
                 }
             }
             stage('uploading artifacts'){
-                when {tag ""}
-                when {Version_check != Release_name}
+                when {
+                expression{env.TAG_NAME != null }    
+                expression{Version_check != Release_name}
+                }
                 steps{
                     sh "echo uploading ${component} to nexus"
                     //sh "curl -u admin:password -X GET 'http://3.95.37.159:8081/service/rest/v1/components?repository=catalogue' | jq ".items[].name""
