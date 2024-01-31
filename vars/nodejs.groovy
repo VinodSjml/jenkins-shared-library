@@ -14,6 +14,7 @@ def call() {
             SONAR_CRED = credentials('SONAR_CRED')
             NEXUS_CRED = credentials('NEXUS_CRED')
             NEXUS_URL = "172.31.25.180"
+            Release_name = "${component}-${TAG_NAME}"
         }
         stages {
             stage('lint check'){
@@ -58,13 +59,14 @@ def call() {
                 when {tag ""}
                 steps{
                     script{
-                        env.Check_status = sh(returnStdout: true, script: "curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} -s -X GET 'http://172.31.25.180:8081/service/rest/v1/components?repository=catalogue'| jq '.items[].name' | grep catalogue-001 | sed -e 's/\"//g' -e 's/.zip//g'")
-                        print Check_status
+                        env.Version_check = sh(returnStdout: true, script: "curl -v -u ${NEXUS_CRED_USR}:${NEXUS_CRED_PSW} -s -X GET 'http://${NEXUS_URL}:8081/service/rest/v1/components?repository=${component}'| jq '.items[].name' | grep ${component}-${TAG_NAME} | sed -e 's/\"//g' -e 's/.zip//g'")
+                        print Version_check
                     }
                 }
             }
             stage('generating artifacts'){
                 when { tag "" }
+                when {Version_check != Release_name}
                 steps{
                     sh "echo executing against $TAG_NAME "
                     sh "npm install"
@@ -74,6 +76,7 @@ def call() {
             }
             stage('uploading artifacts'){
                 when {tag ""}
+                when {Version_check != Release_name}
                 steps{
                     sh "echo uploading ${component} to nexus"
                     //sh "curl -u admin:password -X GET 'http://3.95.37.159:8081/service/rest/v1/components?repository=catalogue' | jq ".items[].name""
