@@ -67,7 +67,7 @@ def call() {
             stage('generating artifacts'){
                 when {
                 expression{env.TAG_NAME != null }    
-                expression{Version_check != Release_name}
+                expression{Version_check == ""}
                 }
                 steps{
                     sh "echo executing against $TAG_NAME "
@@ -79,7 +79,7 @@ def call() {
             stage('uploading artifacts'){
                 when {
                 expression{$TAG_NAME != null }    
-                expression{Version_check != Release_name}
+                expression{Version_check == ""}
                 }
                 steps{
                     sh "echo uploading ${component} to nexus"
