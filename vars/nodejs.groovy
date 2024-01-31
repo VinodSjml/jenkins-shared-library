@@ -65,8 +65,10 @@ def call() {
                 }
             }
             stage('generating artifacts'){
-                when { tag "" }
-                when {Version_check != Release_name}
+                when {
+                expression{env.TAG_NAME != null }    
+                expression{Version_check != Release_name}
+                }
                 steps{
                     sh "echo executing against $TAG_NAME "
                     sh "npm install"
