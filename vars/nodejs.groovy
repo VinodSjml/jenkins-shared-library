@@ -67,7 +67,7 @@ def call() {
             }
             stage('generating artifacts'){
                 when {
-                expression{tag "" }    
+                buildingTag()    
                 expression{Version_check == ""}
                 }
                 steps{
@@ -79,7 +79,7 @@ def call() {
             }
             stage('uploading artifacts'){
                 when {
-                expression{tag "" }    
+                buildingTag()
                 expression{Version_check == ""}
                 }
                 steps{
