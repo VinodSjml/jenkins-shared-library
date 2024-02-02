@@ -36,19 +36,19 @@ def call() {
                 parallel{
                 stage('unit test'){
                     steps{
-                        sh "echo running mvn test"
+                        sh "echo running mvn clean test"
                         sh "echo success"
                     }
                 }
                 stage('integration test'){
                     steps{
-                        sh "echo running mvn verify"
+                        sh "echo running mvn clean verify"
                         sh "echo success"
                     }
                 }
                 stage('functional test'){
                     steps{
-                        sh " echo running functional test"
+                        sh "echo running functional test"
                         sh "echo success"
                     }
                 }
