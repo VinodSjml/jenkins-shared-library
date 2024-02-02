@@ -1,9 +1,10 @@
 def lintChecks() {
-    sh "echo starting lint checks for ${component}..."
+    sh "echo starting lint checks for ${Component}..."
     sh "pip install pylint"
     sh "pylint *.py || true"
-    sh "echo lint checks for ${component} are completed..!"
+    sh "echo lint checks for ${Component} are completed..!"
 }
+
 
 def call() {
         pipeline {
