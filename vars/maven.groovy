@@ -4,6 +4,18 @@ def lintChecks() {
     sh "echo lint checks for ${Component} are completed..!"
 }
 
+def call(){
+    node{
+        common.lintChecks()
+        env.ARGS="-Dsonar.java.binaries=target/"
+        common.sonarChecks()
+        common.testCases()
+        env.NEXUS_URL="172.31.25.180"
+        common.artifacts()
+    }
+}
+
+/*
 def call() {
         pipeline {
         agent any
@@ -62,3 +74,4 @@ def call() {
         }
     }
 }
+*/
