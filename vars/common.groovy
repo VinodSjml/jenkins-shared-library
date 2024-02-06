@@ -69,22 +69,22 @@ def artifacts(){
         if(env.AppType == "nodejs"){
            sh "echo generating artifacts..."
            sh "npm install"
-           sh "zip -R ${Component}-${TAG_NAME}.zip node_modules server.js"
+           sh "zip -r ${Component}-${TAG_NAME}.zip node_modules server.js"
         }
         else if(env.AppType == "maven"){
            sh "echo generating artifacts..."
            sh "mvn clean package"
            sh "mv target/${Component}-1.0.jar ${Component}.jar"
-           sh "zip -R ${Component}-${TAG_NAME}.zip ${Component}.jar"         
+           sh "zip -r ${Component}-${TAG_NAME}.zip ${Component}.jar"         
         }
         else if(env.AppType == "python"){
            sh "echo generating artifacts..."
-           sh "zip -R ${Component}-${TAG_NAME}.zip *.py *.ini requirements.txt"         
+           sh "zip -r ${Component}-${TAG_NAME}.zip *.py *.ini requirements.txt"         
         }
         else {
             sh "echo generating artifacts..."
             sh "cd static/"
-            sh "zip -R ../${Ccomponent}-${TAG_NAME}.zip *"
+            sh "zip -r ../${Ccomponent}-${TAG_NAME}.zip *"
         }
      }
      stage('uploading artifacts'){
