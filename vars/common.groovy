@@ -80,7 +80,7 @@ def artifacts(){
         }
         else if(env.AppType == "python"){
            sh "echo generating artifacts..."
-           sh "zip -r ${Component}-${TAG_NAME}.zip *.py *.ini requirements.txt"         
+           sh "zip -r ${Component}-${TAG_NAME}.zip . -i *.py *.ini requirements.txt"         
         }
         else {
             sh "echo generating artifacts..."
