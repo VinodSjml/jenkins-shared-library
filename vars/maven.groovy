@@ -6,6 +6,7 @@ def lintChecks() {
 
 def call(){
     node{
+        git branch: 'main', url: "https://github.com/VinodSjml/${Component}.git"
         common.lintChecks()
         env.ARGS="-Dsonar.java.binaries=target/"
         common.sonarChecks()
