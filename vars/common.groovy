@@ -69,7 +69,7 @@ def artifacts(){
         if(env.AppType == "nodejs"){
            sh "echo generating artifacts..."
            sh "npm install"
-           sh "zip ${Component}-${TAG_NAME}.zip node_modules server.js"
+           sh "zip -r ${Component}-${TAG_NAME}.zip node_modules server.js"
         }
         else if(env.AppType == "maven"){
            sh "echo generating artifacts..."
