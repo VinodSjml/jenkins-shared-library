@@ -26,6 +26,7 @@ def lintChecks(){
             }
             else if(env.AppType == "python"){
                 sh "echo starting lint checks for ${Component}..."
+                sh "pip install --upgrade pip"
                 sh "pip install pylint"
                 sh "pylint *.py || true"
                 sh "echo lint checks for ${Component} are completed..!"
