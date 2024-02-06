@@ -11,6 +11,7 @@ def sonarChecks(){
 def lintChecks(){
     node{
         stage('Lint Checks'){
+            sh "echo Reached lint check......"
             if(env.AppType == "nodejs"){
                 sh "echo installing jslint"
                 sh "npm i jslint"
