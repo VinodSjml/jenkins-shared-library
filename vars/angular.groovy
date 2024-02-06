@@ -1,5 +1,6 @@
 def call(){
  node{
+  print "HEllo!...."
     git branch: 'main', url: "https://github.com/VinodSjml/${Component}.git"
     common.lintChecks()
     env.ARGS="-Dsonar.sources=."
