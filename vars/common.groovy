@@ -22,7 +22,7 @@ def lintChecks(){
             else if(env.AppType == "maven"){
                 sh "echo performing lint checks for ${Component}"
                 sh "mvn checkstyle:check || true"
-                sh "echo ;int checks for ${Component} are completed"
+                sh "echo lint checks for ${Component} are completed"
             }
             else if(env.AppType == "python"){
                 sh "echo starting lint checks for ${Component}..."
