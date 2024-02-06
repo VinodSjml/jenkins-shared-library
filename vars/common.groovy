@@ -14,7 +14,7 @@ def lintChecks(){
             if(env.AppType == "nodejs"){
                 sh "echo installing jslint"
                 sh "npm i jslint"
-                sh "echo starting ;int checks for ${Component}"
+                sh "echo starting lint checks for ${Component}"
                 sh "/home/centos/node_modules/jslint/bin/jslint.js server.js || true"
                 sh "echo lint checks for ${Component} are completed"
 
