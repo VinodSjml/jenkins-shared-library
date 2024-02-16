@@ -4,7 +4,7 @@ def call(){
             choice(choices: 'dev\nprod', description: "Select your environment", name: "ENV"),
             choice(choices: 'apply\ndestroy', description: "Chose an action", name: "ACTION"),
             string(choices: 'APP_VERSION', description: "Enter your backend version", name: "APP_VERSION")
-        ])
+        ]),
     ])
     node{
         ansiColor('xtrem'){
