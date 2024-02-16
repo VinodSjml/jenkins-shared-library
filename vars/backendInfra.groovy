@@ -14,7 +14,7 @@ def call(){
             sh '''
                 cd ${TFDIR}
                 terrafile -f env-${ENVI}/Terrafile
-                terraform init env-${ENVI}/${ENVI}-backend.tfvars
+                terraform init -backend-config=env-${ENVI}/${ENVI}-backend.tfvars
             '''
         }
         stage('terraform plan'){
