@@ -6,7 +6,7 @@ def call(){
         ])
     ])
     node{
-        ansiColor('xtre'){
+        ansiColor('xtrem'){
         git branch: 'main', url: "https://github.com/VinodSjml/${REPONAME}.git"
         
         stage('terraform init'){
