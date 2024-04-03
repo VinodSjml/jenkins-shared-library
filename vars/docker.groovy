@@ -10,13 +10,13 @@ def call() {
                     sh "echo generating artifacts..."
                     sh "npm install"
                 }
-                if(env.AppType == "maven") {
+                else if(env.AppType == "maven") {
                     sh "echo generating artifacts..."
                     sh "mvn clean package"
                     sh "mv target/${Component}-1.0.jar ${Component}.jar"
                     sh "ls -ltr"
                 }
-                if(env.AppType == "python") {
+                else if(env.AppType == "python") {
                     sh "echo genarting artifacts..."
                     sh "zip -r ${Component}-${TAG_NAME}.zip *.py *.ini requirements.txt"
                 }
