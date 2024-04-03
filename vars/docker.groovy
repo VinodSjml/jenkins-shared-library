@@ -27,7 +27,7 @@ def call() {
                         zip -r ../${Component}-${TAG_NAME}.zip *
                     '''
                 }
-                sh "docker build -t 323468129901.dkr.ecr.us-east-1.amazonaws.com/${Component}:${TAG_NAME}"
+                sh "docker build -t 323468129901.dkr.ecr.us-east-1.amazonaws.com/${Component}:${TAG_NAME} ."
                 sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 323468129901.dkr.ecr.us-east-1.amazonaws.com"
                 sh "docker push 323468129901.dkr.ecr.us-east-1.amazonaws.com/${Component}:${TAG_NAME}"
             }
