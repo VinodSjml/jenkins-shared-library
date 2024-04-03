@@ -2,7 +2,7 @@ def call() {
     node() {
         sh "rm -rf *"
         git branch: 'main', url: "https://github.com/VinodSjml/${Component}.git"
-        env.AppType=""
+        env.APP_TYPE=""
         common.lintChecks()
         if(env.TAG_NAME != null) {
             stage('Generating Artifacts...') {
